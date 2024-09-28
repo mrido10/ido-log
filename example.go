@@ -57,6 +57,6 @@ func example5() {
 	log.Info("this is INFO", string(b))
 	log.Debug("this is DEBUG", ex.Field1, ex.Field2)
 	log.Error("this is ERROR", nil)
-	//log.Panic("this is PANIC")
+	log.Panic("this is PANIC")
 	log.Fatal("this is FATAL")
 }
