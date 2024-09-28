@@ -1,11 +1,25 @@
 package main
 
 import (
+	"encoding/json"
 	log "github.com/mrido10/ido-log/logger"
+	"github.com/mrido10/ido-log/runtime"
 )
 
 func main() {
+	// set the log is print file info or not
+	// default false > is not print info
+	log.SetIsPrintCaller(true)
+
+	// get file info
+	LoggingCallFileInfo()
+
+	// example to logging
 	example1()
+}
+
+func LoggingCallFileInfo() {
+	log.Debug(runtime.GetRuntimeCaller(1))
 }
 
 func example1() {
@@ -39,9 +53,10 @@ func example5() {
 		Field5: nil,
 	}
 
-	log.Info("this is INFO", ex)
+	b, _ := json.Marshal(ex)
+	log.Info("this is INFO", string(b))
 	log.Debug("this is DEBUG", ex.Field1, ex.Field2)
 	log.Error("this is ERROR", nil)
-	log.Panic("this is PANIC")
+	//log.Panic("this is PANIC")
 	log.Fatal("this is FATAL")
 }
